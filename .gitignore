@@ -1,0 +1,13 @@
+# Python .venv
+.venv/
+
+# Data and Maps Folder
+data/
+maps/
+
+# Environnement
+.env
+
+# IDE
+.idea/
+.vscode/
