@@ -3,8 +3,8 @@ import numpy as np
 import os
 
 # Configuration
-clean_data = "../data/argent/waze_gps_2026_clean.csv"
-scoring_data = "../data/gold/waze_gps_2026_scores.csv"
+clean_data = "data/argent/waze_gps_2026_clean.csv"
+scoring_data = "data/gold/waze_gps_2026_scores.csv"
 
 def scoring(input_file, output_file):
     if not os.path.exists(input_file):
@@ -15,8 +15,12 @@ def scoring(input_file, output_file):
     df = pd.read_csv(input_file, sep=';', low_memory=False)
 
     # Aggregation by street
-    street_stats = df.groupby(['city', 'street']).agg(total_alerts=('uuid', 'count'),delay_moyen=('delay', 'mean'),speed_moyenne=('speed', 'mean')).reset_index()
-
+    street_stats = df.groupby('street').agg(
+        villes_traversees=('city', lambda x: ', '.join(x.dropna().unique())),
+        total_alerts=('uuid', 'count'),
+        delay_moyen=('delay', 'mean'),
+        speed_moyenne=('speed', 'mean')
+    ).reset_index()
     # Scoring
     print("Scoring")
 

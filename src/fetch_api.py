@@ -10,7 +10,7 @@ load_dotenv()
 # Configuration
 api_key = os.environ.get('API_KEY')
 url_csv = f"https://data.grandparissud.fr/api/explore/v2.1/catalog/datasets/2019-04-07-waze-traffic/exports/csv?apikey={api_key}"
-dir_datalake = "../data/bronze"
+dir_datalake = "data/bronze"
 
 
 def fetch_data(target_year):

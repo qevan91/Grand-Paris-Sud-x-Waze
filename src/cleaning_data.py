@@ -2,8 +2,8 @@ import pandas as pd
 import os
 
 # Configuration
-raw_data = "../data/bronze/waze_gps_2026.csv"
-clean_data = "../data/argent/waze_gps_2026_clean.csv"
+raw_data = "data/bronze/waze_gps_2026.csv"
+clean_data = "data/argent/waze_gps_2026_clean.csv"
 
 def data_cleaning(input_file, output_file):
     if not os.path.exists(input_file):

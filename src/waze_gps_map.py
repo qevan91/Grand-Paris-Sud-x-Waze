@@ -6,9 +6,9 @@ import os
 import re
 
 # Configuration
-path_clean_data = "../data/argent/waze_gps_2026_clean.csv"
-path_scoring_data = "../data/gold/waze_gps_2026_scores.csv"
-dir_maps = "../maps/rapports_2026_score_unique"
+path_clean_data = "data/argent/waze_gps_2026_clean.csv"
+path_scoring_data = "data/gold/waze_gps_2026_scores.csv"
+dir_maps = "maps/rapports_2026_score_unique"
 
 def waze_map_report(clean_data, score_data, output_file):
     if not os.path.exists(clean_data):
@@ -33,7 +33,8 @@ def waze_map_report(clean_data, score_data, output_file):
         if "202" in str(ville): continue
 
         df_v = df[df['city'] == ville].copy()
-        stats_v = street_stats[street_stats['city'] == ville]
+        rues_de_la_ville = df_v['street'].unique()
+        stats_v = street_stats[street_stats['street'].isin(rues_de_la_ville)]
 
         if df_v.empty or stats_v.empty:
             continue
