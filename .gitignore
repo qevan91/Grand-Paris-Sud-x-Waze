@@ -1,6 +1,8 @@
 # Python .venv
 .venv/
 
+src/__pycache__/
+
 # Data and Maps Folder
 data/
 maps/
